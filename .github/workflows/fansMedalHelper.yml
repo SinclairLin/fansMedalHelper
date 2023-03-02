@@ -35,6 +35,7 @@ jobs:
     - name: Modify users.yaml
       run: |
         cd fansMedalHelper
+        mv users.example.yaml users.yaml
         sed -i "s/access_key:.*$/access_key: ${{ secrets.ACCESS_KEY }}/" users.yaml
         sed -i "s/MOREPUSH:.*$/MOREPUSH: {\"notifier\":\"pushplus\",\"params\":{\"markdown\":False,\"token\":\"${{ secrets.PUSHPLUS_TOKEN }}\"}}/" users.yaml
         sed -i "s/ASYNC:.*$/ASYNC: ${{ secrets.YIBUFOU }}/" users.yaml
