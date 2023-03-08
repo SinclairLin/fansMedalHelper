@@ -37,7 +37,8 @@ jobs:
         cd fansMedalHelper
         mv users.example.yaml users.yaml
         sed -i "s/access_key:.*$/access_key: ${{ secrets.ACCESS_KEY }}/" users.yaml
-        sed -i "s/MOREPUSH:.*$/MOREPUSH: {\"notifier\":\"pushplus\",\"params\":{\"markdown\":False,\"token\":\"${{ secrets.PUSHPLUS_TOKEN }}\"}}/" users.yaml
+        # sed -i "s/MOREPUSH:.*$/MOREPUSH: {\"notifier\":\"pushplus\",\"params\":{\"markdown\":False,\"token\":\"${{ secrets.PUSHPLUS_TOKEN }}\"}}/" users.yaml
+        sed -i "s/MOREPUSH:.*$/MOREPUSH: {\"notifier\":\"telegram\",\"params\":{\"markdown\":false,\"token\":\"${{ secrets.TELEGRAM_TOKEN }}\",\"userid\":\"${{ secrets.USER_ID }}\"}}/" users.yaml
         sed -i "s/ASYNC:.*$/ASYNC: ${{ secrets.YIBUFOU }}/" users.yaml
 
     - name: Run!
